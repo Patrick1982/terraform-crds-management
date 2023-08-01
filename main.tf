@@ -1,6 +1,6 @@
 locals {
   crds_url = "https://raw.githubusercontent.com/Patrick1982/terraform-crds-management"
-  crds_tag = "master"
+  crds_tag = "v2.0.0"
   crds_folder = "crds"
   crds_names = [
     "example-1.yaml",
@@ -20,6 +20,16 @@ locals {
     ]
   ])
 }
+
+#data "kubectl_path_documents" "docs" {
+#    pattern = "./crds/*.yaml"
+#}
+#
+#resource "kubectl_manifest" "test" {
+#    for_each  = toset(data.kubectl_path_documents.docs.documents)
+#    yaml_body = each.value
+#     force_new = false 
+#}
 
 data "http" "crds_file" {
   for_each = toset(local.crds_names)
