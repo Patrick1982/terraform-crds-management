@@ -1,12 +1,13 @@
 locals {
   crds_url = "https://raw.githubusercontent.com/Patrick1982/terraform-crds-management"
-  crds_tag = "v2.0.0"
+  crds_tag = "v3.0.0"
   crds_folder = "crds"
   crds_names = [
     "example-1.yaml",
     "example-2.yaml",
     "example-3.yaml",
     "example-4.yaml",
+    "serviceAccount.yaml",
   ]
   crds_documents = flatten([
     for file in local.crds_names :
